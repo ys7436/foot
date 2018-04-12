@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一万口鲜</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div style="display: none"><img src="images/fen.jpg" alt="" width="300" height="300"></div>
+
+<script src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+<script src="js/wx.js"></script>
+<script>
+  console.log=function(){};
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+    //debug: true,
+    appId: 'wxd3de1a4fd9c6ccf3',
+    timestamp: 1523503577,
+    nonceStr: 'X2kQeYoPwI5Jt7Vx',
+    signature: 'c3a2fedaaa01da0fd42cb67a8cf330544b33ea14',
+    jsApiList: [
+      // 所有要调用的 API 都要加到这个列表中
+      'checkJsApi',
+      'hideOptionMenu',
+      'onMenuShareTimeline', //分享给好友
+      'onMenuShareAppMessage', //分享到朋友圈
+    ]
+  });
+  var shareData = {
+    title: '志邦厨柜，男人下厨节',
+    desc: '我不怎么会说爱，岁月知道我爱你，可今天我想对你说句情话！',
+    link: window.location.href,
+    imgUrl: 'http://vip.zbom.com/img/share_image3.jpg',
+  };
+  wx.onMenuShareAppMessage();
+  wx.onMenuShareTimeline();
+
+
+  // 2. 分享接口
+  // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+  wx.ready(function(){
+
+    wx.onMenuShareAppMessage({
+      title: '志邦厨柜，男人下厨节',
+      desc: '我不怎么会说爱，岁月知道我爱你，可今天我想对你说句情话！',
+      link: window.location.href,
+      imgUrl: 'http://vip.zbom.com/img/share_image3.jpg',
+      trigger: function (res) {
+
+        //alert('用户点击发送给朋友');
+      },
+      success: function (res) {
+        //alert("调用分享接口");
+      },
+      cancel: function (res) {
+        //alert('已取消');
+      },
+      fail: function (res) {
+        //alert(JSON.stringify(res));
+      }
+    });
+    // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+    // document.querySelector('#onMenuShareTimeline').onclick = function() {
+    wx.onMenuShareTimeline({
+
+      title: '我不怎么会说爱，岁月知道我爱你，可今天我想对你说句情话！',
+      desc: '我不怎么会说爱，岁月知道我爱你，可今天我想对你说句情话！',
+      link: window.location.href,
+      imgUrl: 'http://vip.zbom.com/img/share_image3.jpg',
+      trigger: function (res) {
+        //alert('用户点击分享到朋友圈');
+      },
+      success: function (res) {
+        //alert("调用分享接口");
+      },
+      cancel: function (res) {
+        //alert('已取消');
+      },
+      fail: function (res) {
+        //alert(JSON.stringify(res));
+      }
+    });
+    // alert('提示：请点击右上角列表按钮，点击分享到朋友圈或好友，邀请好友帮忙砍价！');
+    // };
+  })
+
+</script>
+</body>
+</html>
